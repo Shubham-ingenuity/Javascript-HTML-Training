@@ -1,41 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Javascript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day Two Assignments</title>
 </head>
+
 <body>
-    <div>Hi</div>
-    <div>How are you?</div>
-    <script>
-        function testFunction() {
-            alert(testVariable2);
-            var testVariable2 = "Second";
-            alert(testVariable2);
 
-        }
-        testFunction();
-
-        if(true) {
-            let testVariable = "First";
-        }
-//DataTypes
-        const NUMBER_1 = 21;
-        let string_1 = `Hello I am ${NUMBER_1} years old!`;
-        let boolean_1 = true;
-        alert(1/0);
-        alert("Wars");
-        if("Ramu"/2 === 11)
-            alert("Yay!");
-            else
-            alert("Oh no!");
-        alert(isNaN("Ramu"/2 + 232));
-        alert("22"/2);
-        if("abc" < "acd");
-
-
-        alert(string_1);
-        alert("bye world!");
-    </script>
 </body>
+
 </html>
+
+<script>
+    "use strict";
+
+    function employee(name, city, gender, designation, company) {
+        this.id = 'EMP-' + Math.floor(Math.random() * 100)
+        this.name = name;
+        this.city = city;
+        this.gender = gender;
+        this.designation = designation;
+        this.company = company;
+        this.getEmployeeId = function () {
+            return this.id;
+        }
+    }
+
+    let employee1 = new employee("Ramu", "New Delhi", "Male", "Software Engineer", "Ingenuity");
+    let employee2 = new employee("Hari", "Noida", "Male", "Associate Software Engineer", "Ingenuity");
+    let employee3 = new employee("Pooja", "Agra", "Female", "Game Developer", "TCS");
+
+    employee2.age = 27;
+    employee3.age = 25;
+
+    console.log(employee1, employee2, employee3);
+
+    var test1 = isObjectKeysSimilar(employee1, employee2);
+    var test2 = isObjectKeysSimilar(employee3, employee1);
+    var test3 = isObjectKeysSimilar(employee2, employee3);
+
+    console.log(test1);
+    console.log(test2);
+    console.log(test3);
+
+    function isObjectKeysSimilar(obj1, obj2) {
+
+        var returnObj = {
+            largerObj: Object.keys(obj1).length > Object.keys(obj2).length ? obj1 : obj2,
+            smallerObj: Object.keys(obj1).length < Object.keys(obj2).length ? obj1 : obj2,
+            result: true
+        }
+
+        for (let key in returnObj.largerObj) {
+            if (!returnObj.smallerObj.hasOwnProperty(key)) {
+                returnObj.result = false;
+            }
+        }
+
+        return returnObj;
+    }
+</script>
