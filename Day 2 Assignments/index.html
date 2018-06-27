@@ -38,9 +38,9 @@
 
     console.log(employee1, employee2, employee3);
 
-    var test1 = isObjectKeysSimilar(employee1, employee2);
-    var test2 = isObjectKeysSimilar(employee3, employee1);
-    var test3 = isObjectKeysSimilar(employee2, employee3);
+    let test1 = isObjectKeysSimilar(employee1, employee2);
+    let test2 = isObjectKeysSimilar(employee3, employee1);
+    let test3 = isObjectKeysSimilar(employee2, employee3);
 
     console.log(test1);
     console.log(test2);
@@ -48,7 +48,7 @@
 
     function isObjectKeysSimilar(obj1, obj2) {
 
-        var returnObj = {
+        let returnObj = {
             largerObj: Object.keys(obj1).length > Object.keys(obj2).length ? obj1 : obj2,
             smallerObj: Object.keys(obj1).length < Object.keys(obj2).length ? obj1 : obj2,
             result: true
