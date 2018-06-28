@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Expanding Div</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        #progressBox {
+            height: 30px;
+            width: 90%;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            top: 50%;
+            position: relative;
+            margin: auto;
+            padding: 0;
+            text-align: center;
+        }
+
+        #progressLoading {
+            height: inherit;
+            width: 0%;
+            border-radius: 20px;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            background: red;
+        }
+
+        #btnStartLoading {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            position: absolute;
+            bottom: 10%;
+            margin: 10px;
+            left: 40%;
+        }
+
+
+        div.mask {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.15);
+            display: none;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div id="progressBox">
+        <div id="progressLoading">
+
+        </div>
+    </div>
+
+    <button id="btnStartLoading">Click Me to Start Loading</button>
+
+    <div id="mask" class="mask"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    "use strict";
+
+    let btnStartLoadingButton = document.getElementById('btnStartLoading');
+    btnStartLoadingButton.addEventListener('click', handleProgressLoading);
+
+    function handleProgressLoading() {
+        let progressLoadingDiv = document.getElementById("progressLoading");
+        let progressBoxDiv = document.getElementById("progressBox");
+        let parentDivWidth = progressBoxDiv.offsetWidth;
+        let incNum = 0;
+
+        let interval1 = setInterval(function () {
+            if (incNum < parentDivWidth) {
+                incNum += 5;
+                progressLoadingDiv.style.width = calculatePercentage(incNum, parentDivWidth) + '%'; //incNum + 'px';
+                document.getElementById('mask').style.display = 'block';
+            } else {
+                clearInterval(interval1);
+                document.getElementById('mask').style.display = 'none';
+            }
+        }, 10);
+    }
+
+    function calculatePercentage(a, b) {
+        return (a / b) * 100;
+    }
+
+</script>
