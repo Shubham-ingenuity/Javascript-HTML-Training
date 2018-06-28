@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day Two Assignments</title>
+</head>
+
+<body>
+    <h1>Please Check Console</h1>
+</body>
+
+</html>
+
+<script>
+    "use strict";
+
+    function employee(name, city, gender, designation, company) {
+        this.id = 'EMP-' + Math.floor(Math.random() * 100)
+        this.name = name;
+        this.city = city;
+        this.gender = gender;
+        this.designation = designation;
+        this.company = company;
+        this.getEmployeeId = function () {
+            return this.id;
+        }
+    }
+
+    let employee1 = new employee("Ramu", "New Delhi", "Male", "Software Engineer", "Ingenuity");
+    let employee2 = new employee("Hari", "Noida", "Male", "Associate Software Engineer", "Ingenuity");
+    let employee3 = new employee("Pooja", "Agra", "Female", "Game Developer", "TCS");
+
+    employee2.age = 27;
+    employee3.age = 25;
+
+    console.log(employee1, employee2, employee3);
+
+    let test1 = isObjectKeysSimilar(employee1, employee2);
+    let test2 = isObjectKeysSimilar(employee3, employee1);
+    let test3 = isObjectKeysSimilar(employee2, employee3);
+
+    console.log("Is employee 1 and employee 2 keys are similar : " + test1);
+    console.log("Is employee 3 and employee 1 keys are similar : " + test2);
+    console.log("Is employee 2 and employee 3 keys are similar : " + test3);
+
+    function isObjectKeysSimilar(obj1, obj2) {
+
+        let returnObj = {
+            largerObj: Object.keys(obj1).length > Object.keys(obj2).length ? obj1 : obj2,
+            smallerObj: Object.keys(obj1).length < Object.keys(obj2).length ? obj1 : obj2,
+            result: true
+        }
+
+        for (let key in returnObj.largerObj) {
+            if (!returnObj.smallerObj.hasOwnProperty(key)) {
+                returnObj.result = false;
+            }
+        }
+
+        return returnObj.result;
+    }
+</script>
