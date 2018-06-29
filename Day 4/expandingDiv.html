@@ -103,24 +103,18 @@
 
     function handleProgressLoading() {
         let progressLoadingDiv = document.getElementById("progressLoading");
-        let progressBoxDiv = document.getElementById("progressBox");
-        let parentDivWidth = progressBoxDiv.offsetWidth;
         let incNum = 0;
 
         let interval1 = setInterval(function () {
-            if (incNum < parentDivWidth) {
-                incNum += 5;
-                progressLoadingDiv.style.width = calculatePercentage(incNum, parentDivWidth) + '%'; //incNum + 'px';
+            if (incNum < 100) {
+                incNum += 1;
+                progressLoadingDiv.style.width = incNum + '%'; //incNum + 'px';
                 document.getElementById('mask').style.display = 'block';
             } else {
                 clearInterval(interval1);
                 document.getElementById('mask').style.display = 'none';
             }
-        }, 10);
-    }
-
-    function calculatePercentage(a, b) {
-        return (a / b) * 100;
+        }, 50);
     }
 
 </script>
