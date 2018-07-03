@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day 7 Assignments</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    "use strict";
+
+    function counter() {
+        let count = 0;
+        function mainObj() {
+            mainObj.incrementCount = function () {
+                count++;
+            }
+            mainObj.alertCount = function () {
+                alert(count);
+            }
+
+            return mainObj;
+        }
+        return mainObj();
+    }
+
+    var obj1 = counter();
+
+    obj1.incrementCount();
+    obj1.incrementCount();
+    obj1.incrementCount();
+
+    obj1.alertCount();
+
+    function abc(a) {
+        return function (b) {
+            return function (c) {
+                return a * b * c
+            }
+        }
+    }
+
+    console.log(abc(2)(3)(4));
+
+    var whatsMyName = (function () {
+        let name = '';
+
+        function getName() {
+            return name;
+        }
+
+        function setName() {
+            name = "Shubham"
+        }
+
+        setName();
+
+        return getName();
+    })();
+
+    console.log(name);
+
+    console.log(whatsMyName);
+
+    var obj = {
+        name: "Shubham",
+        city: "Kanpur",
+        age: 27
+    }
+
+    console.log(Object.getOwnPropertyDescriptor(obj, 'name'));
+
+
+</script>
